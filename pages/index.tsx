@@ -1,8 +1,11 @@
 // Components==============
+import useGetSports from '@/actions/useGetSports';
 import Head from 'next/head';
 // =========================
 
 export default function Demo() {
+  const { data: sports } = useGetSports();
+
   return (
     <>
       <Head>
@@ -18,6 +21,7 @@ export default function Demo() {
             🎉
           </span>
         </p>
+        <p>{sports?.[0].attributes.name}</p>
       </div>
     </>
   );

@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import '@vtmn/css/dist/index.css';
+import axios from 'axios';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 
@@ -13,6 +14,9 @@ const queryClient = new QueryClient({
     },
   },
 });
+
+// set default accepted language to Dutch
+axios.defaults.headers['Accept-Language'] = 'nl-nl';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
