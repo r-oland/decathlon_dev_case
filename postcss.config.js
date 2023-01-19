@@ -15,7 +15,7 @@ const purgeCSS =
           safelist: ['html', 'body'],
         },
       ]
-    : [];
+    : null;
 
 module.exports = {
   plugins: [
@@ -33,6 +33,6 @@ module.exports = {
         },
       },
     ],
-    ...purgeCSS,
+    purgeCSS,
   ],
 };

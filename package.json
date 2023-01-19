@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "next build",
+    "prebuild": "rm -rf .next",
+    "perform-build": "next build",
+    "build": "npm run prebuild && npm run perform-build",
     "lint": "next lint",
     "serve": "next start",
     "start": "next dev -p 1234"
