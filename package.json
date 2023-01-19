@@ -9,12 +9,19 @@
     "start": "next dev -p 1234"
   },
   "dependencies": {
-    "next": "13.1.2",
+    "@tanstack/react-query": "^4.22.0",
+    "@tanstack/react-query-devtools": "^4.22.0",
+    "@vtmn/css": "^0.89.0",
+    "@vtmn/css-tailwind-preset": "^0.35.34",
+    "@vtmn/react": "^0.60.0",
+    "axios": "^1.2.3",
+    "next": "^13.0.7",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "4.9.4"
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^5.0.0",
     "@types/node": "18.11.18",
     "@types/react": "18.0.27",
     "@types/react-dom": "18.0.10",
@@ -25,6 +32,10 @@
     "eslint-config-next": "13.1.2",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.3"
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-preset-env": "^7.8.3",
+    "prettier": "^2.8.3",
+    "sass": "^1.57.1",
+    "tailwindcss": "^3.2.4"
   }
 }
