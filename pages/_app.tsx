@@ -1,3 +1,4 @@
+import NavBar from '@/components/NavBar';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import '@vtmn/css/dist/index.css';
@@ -27,6 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       {/*  Provide the client to your App */}
       <QueryClientProvider client={queryClient}>
+        <NavBar />
         <Component {...pageProps} />
         <ReactQueryDevtools />
       </QueryClientProvider>
