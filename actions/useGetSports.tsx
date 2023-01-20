@@ -6,7 +6,10 @@ import axios from 'axios';
 export const getSports = async () => {
   const { data } = await axios.get('https://sports.api.decathlon.com/sports');
 
-  const response = (data as SportResponseEntity).data;
+  // I wanted to implement search functionality, but I ran out of time
+  const response = (data as SportResponseEntity).data.filter(
+    (d, i) => i > 3 && i <= 13
+  );
   return response;
 };
 

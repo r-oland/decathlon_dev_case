@@ -1,28 +1,60 @@
 // Components==============
 import useGetSports from '@/actions/useGetSports';
+import Maps from '@/components/Map';
+import SportCard from '@/components/SportCard';
+import { VtmnSearch } from '@vtmn/react';
 import Head from 'next/head';
+import { createContext, useMemo, useState } from 'react';
 // =========================
 
+type DemoContextType = {
+  selectedSport: number;
+  setSelectedSport: React.Dispatch<React.SetStateAction<number>>;
+};
+
+export const DemoContext = createContext({} as DemoContextType);
+
 export default function Demo() {
+  const [selectedSport, setSelectedSport] = useState(0);
+
   const { data: sports } = useGetSports();
+
+  const sport = sports?.[0];
+
+  const values = useMemo(
+    () => ({
+      selectedSport,
+      setSelectedSport,
+    }),
+    [selectedSport]
+  );
 
   return (
     <>
       <Head>
         <title>Decathlon Dev Case</title>
       </Head>
-      <div className="vtmn-flex vtmn-bg-brand-digital-light-3 vtmn-rounded-lg vtmn-p-6 vtmn-m-3">
-        <p className="vtmn-text-xl vtmn-text-center vtmn-font-semibold vtmn-text-black">
-          Welcome to{' '}
-          <span className="vtmn-text-brand-digital vtmn-text-2xl">
-            @vtmn/css
-          </span>
-          <span role="img" aria-label="Tada!">
-            🎉
-          </span>
-        </p>
-        <p>{sports?.[0].attributes.name}</p>
-      </div>
+      <DemoContext.Provider value={values}>
+        <div
+          className="vtmn-grid vtmn-gap-6 vtmn-mb-4 vtmn-p-5 vtmn-w-full "
+          style={{ gridTemplateColumns: 'auto 1fr' }}
+        >
+          <div className="vtmn-w-max">
+            <div className="vtmn-px-2">
+              <VtmnSearch disabled />
+            </div>
+            <div
+              className="vtmn-mt-4 vtmn-grid vtmn-gap-4 vtmn-overflow-auto vtmn-p-2"
+              style={{ height: 'calc(100vh - 235px)' }}
+            >
+              {sports?.map(
+                (s) => !!sport && <SportCard sport={s} key={s.id} />
+              )}
+            </div>
+          </div>
+          <Maps />
+        </div>
+      </DemoContext.Provider>
     </>
   );
 }

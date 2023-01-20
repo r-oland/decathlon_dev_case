@@ -1,5 +1,5 @@
-type SportByCountry = {
-  type: string;
+type PlaceEntity = {
+  type: 'Feature';
   properties: {
     uuid: string;
     name?: string;
@@ -64,11 +64,11 @@ type SportByCountry = {
   };
   geometry: {
     type: string;
-    coordinates?: any[];
+    coordinates?: number[][];
   };
 };
 
-type SportByCountryResponseEntity = {
+type PlaceResponseEntity = {
   links: {
     self: string;
     first: string;
@@ -78,6 +78,6 @@ type SportByCountryResponseEntity = {
   count: number;
   data: {
     type: string;
-    features: SportByCountry[];
+    features: PlaceEntity[];
   };
 };

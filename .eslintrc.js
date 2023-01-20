@@ -53,6 +53,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 0,
     'react/no-array-index-key': 0,
     'react/react-in-jsx-scope': 0,
+    '@next/next/no-img-element': 0,
     'jsx-a11y/no-static-element-interactions': 0,
     'jsx-a11y/click-events-have-key-events': 0,
     'react/jsx-key': ['error', { checkFragmentShorthand: true }],

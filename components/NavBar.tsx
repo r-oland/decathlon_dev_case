@@ -5,7 +5,6 @@ import React from 'react';
 
 function Logo() {
   return (
-    // eslint-disable-next-line @next/next/no-img-element
     <img
       src="/decathlon-logo.svg"
       alt="logo"
@@ -19,7 +18,7 @@ function Logo() {
 
 export default function NavBar() {
   return (
-    <div className="vtmn-mb-6 vtmn-shadow-100">
+    <div className="vtmn-mb-7 vtmn-shadow-100">
       <VtmnNavbar logo={<Logo />} logoHref="/" aria-label="Simple navbar" />
     </div>
   );
