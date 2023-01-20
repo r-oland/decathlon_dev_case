@@ -1,38 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Get started 🛫
 
-## Getting Started
+1. Add a .env file. You can follow the example of .env.example and add the maps API key.
+2. Run `npm install` and `npm start`.
 
-First, run the development server:
+## Description 💬
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+This is a single-page demo website that features a list of sports and a map view. The application uses the Sport API to retrieve information about the sports. When a user clicks on one of these sports, the application uses the Sport Places API to retrieve information about places that are related to the sport. These places are then displayed on the map and can be clicked on to show more information.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## What I did ✅
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- The project utilizes the state management solution, react-query, which is known for keeping the state 'fresh' without the need for extensive boilerplate code. (The icon located in the bottom left corner is used to open the react-query dev tools)
+- I encountered an issue with react-query throwing an obscure error, which was later found to be caused by the experimental nature of the Next 13 app folder. I resolved the issue by refactoring the app folder components to the old pages folder.
+- I extracted the data types and placed them in the types directory.
+- I made a concerted effort to incorporate the Vitamin design system throughout the project.
+- I implemented the `@vtmn/css` package. Although it was my first experience using tailwind, I found it to be a valuable learning opportunity, albeit one that resulted in a slower development process.
+- To make the `@vtmn/css` tree shakable, I used PurgeCSS. I also added the default Next.js Post CSS config to ensure it would not get lost in overwriting the postcss.config.js file.
+- There was an issue that PurgeCSS caused during development where the .next folder needed to be deleted before changes could be noticed in the browser. I fixed this by only enabling it during production builds.
+- The .next folder gets deleted each time before a production build to fix the pruneCSS bug.
+- I used the google-map-react library that uses the GOOGLE_MAPS_API to render a map with markers.
+- The file uses an Eslint config that for the majority extends the Airbnb config. I also added prettier in the config because it puts all formatting logic in one place.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Time constraint compromises ❌
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- I ultimately decided against using Svelte for this project as I felt it would add an additional layer of complexity given that I was already working with new technologies such as the Vitamin design system, tailwind setup, and the decathlon API.
+- I had intended to create a simple design in Figma before beginning development, however, due to the time required to set up the repository, I was unable to do so.
+- The list view of sports is currently limited to 10 items while all sports are still being fetched. Ideally, I would have preferred to limit the request, if possible, and lazy load the remaining items based on user interactions.
+- The search bar is currently disabled as I did not have sufficient time to implement a search sports endpoint.
+- The coordinates associated with a place are currently limited to one, due to limitations with the map library's ability to handle a large number of markers. This could have been resolved by grouping markers based on the zoom level, but it would have been a significant undertaking for this project.
+- The markers on the map are not currently interactive, and I would have preferred to add a modal or tooltip element to display more meaningful data.
+- There was an issue with the tailwind setup using `@vtmn/css-tailwind-preset` where the styles did not apply, which led me to use the `@vtmn/css` setup. I still wanted IntelliSense, so I left the configuration file and the library installed, but this is not a permanent solution.
+- The site is not currently responsive.
+- I would have liked to improve the design of the cards by adding more data.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Time 🕚
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **Setting up:** 2 hours
+- **Building UI:** 2 hours
+- **Documenting in README:** 1 hour
